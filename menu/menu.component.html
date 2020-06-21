@@ -1,0 +1,21 @@
+<div [class]="cssClassObject.menu" id="leafletMenuID">
+  <div [class]="cssClassObject.container" id="menuContainerID">
+    <div [class]="cssClassObject.arrow" (click)="previous()">
+      <mat-icon style="color: gray" *ngIf="previousItem === -1">{{cssClassObject.arrows.firstArrow}}</mat-icon>
+      <mat-icon style="color: white" *ngIf="previousItem !== -1">{{cssClassObject.arrows.firstArrow}}</mat-icon>
+    </div>
+
+    <div [class]="cssClassObject.item" *ngFor="let item of itemsToShow" matTooltip="{{item?.tooltip?.text}}" matTooltipPosition = "{{item?.tooltip?.position? item?.tooltip?.position : 'above'}}" (click)="manageClick(item)">
+      <mat-icon style="color: white">{{item?.icon}}</mat-icon>
+    </div>
+    <div [class]="cssClassObject.arrow"  (click)="next()">
+      <mat-icon style="color: gray" *ngIf="!(this.nextItem<this.items.length)">{{cssClassObject.arrows.secondArrow}}</mat-icon>
+      <mat-icon style="color: white" *ngIf="(this.nextItem<this.items.length)">{{cssClassObject.arrows.secondArrow}}</mat-icon>
+    </div>
+  </div>
+  <div [class]="cssClassObject.hider" id="menuHiderID" (click) ="hide()">
+
+  </div>
+
+</div>
+
